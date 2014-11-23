@@ -1,0 +1,11 @@
+{
+  "name": "HandRave",
+  "version": "0.0.0",
+  "description": "WildHacks hack using Leap Motion and SoundCloud",
+  "main": "server.js",
+  "author": "Thomas Huang",
+  "dependencies": {
+    "express": "~4.10.1",
+    "morgan": "~1.1.1"
+  }
+}
