@@ -1,19 +1,38 @@
-<html>
+<html ng-app="HandRave" class="no-js">
 <head>
   <title>HandRave</title>
   
 </head>
 
-<body>
-	<div id="main"></div>
+<body ng-controller="mainController">
+	<div id="main">
+    <div>
+      <div>Downwards Swipe</div>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[0]">{{sounds[0].name}}</label>
+        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[1]">{{sounds[1].name}}</label>
+        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[2]">{{sounds[2].name}}</label>
+      </div>
+    </div>
+    <div>
+      <div>Sideways (left) Swipe</div>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[0]">{{sounds[0].name}}</label>
+        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[1]">{{sounds[1].name}}</label>
+        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[2]">{{sounds[2].name}}</label>
+      </div>
+    </div>
+  </div>
+  <!--
   <div id="output"></div>
-  <div id="progress"></div>
+  <div id="progress"></div> -->
   <canvas id="plots"></canvas>
   <div id="widget"></div>
 
 
 
   <link href="bump.css" rel="stylesheet" type="text/css">
+  <link href="/resources/bootstrap.min.css" rel="stylesheet" type="text/css">
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"></script>
   <script src="//js.leapmotion.com/leap-0.6.2.min.js"></script>
@@ -21,8 +40,11 @@
   <script src="//js.leapmotion.com/leap.rigged-hand-0.1.4.min.js"></script>
   <script src="//js.leapmotion.com/leap-plugins-0.1.10-utils.js"></script>
   <script src="//connect.soundcloud.com/sdk.js"></script>
-  <script src="/scapi.js"></script>
+  <script src="/resources/angular.min.js"></script>
+  <script src="/resources/ui-bootstrap.min.js"></script>
+  <!-- <script src="/resources/bootstrap.min.js"></script> -->
+  <script src="/resources/scapi.js"></script>
   <script src="/sc.js"></script>
   <script src="/bump.js"></script>
 </body>
-</html>
+</html>  

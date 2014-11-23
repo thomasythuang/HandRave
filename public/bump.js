@@ -5,11 +5,29 @@ window.plotter = new LeapDataPlotter({
 var output = document.getElementById('output'),
 	progress = document.getElementById('progress'),
 	display = document.getElementById('main');
-var kick = new Audio('resources/sounds/bump2.wav'),
-  cymbal = new Audio('resources/sounds/cymbal1.wav');
+var down, left;
 var hit1 = false, hit2 = false; 
 var posX1, posX2;
 var ready1x = false, ready1y = false, ready2x = false, ready2y = false;
+
+var app = angular.module('HandRave', ['ui.bootstrap',]);
+app.controller('mainController', function($scope){
+  $scope.sounds = [
+    {name: 'bump1', link: 'resources/sounds/bump1.wav'},
+    {name: 'bump2', link: 'resources/sounds/bump2.wav'},
+    {name: 'cymbal1', link: 'resources/sounds/cymbal1.wav'},
+  ]
+  $scope.down = $scope.sounds[1];
+  $scope.left = $scope.sounds[2];
+  
+  $scope.$watch('down', function(){
+    down = new Audio($scope.down.link);
+  });
+  $scope.$watch('left', function(){
+    left = new Audio($scope.left.link);
+  })
+  
+});
 
 Leap.loop({background: true}, function(frame){
     var hand1 = frame.hands[0];
@@ -30,7 +48,10 @@ Leap.loop({background: true}, function(frame){
       var v1y = hand1.palmVelocity[1];
 
       if (v1y < -700 && ready1y){
-        bump(true);
+        if (hand1.grabStrength > 0.9)
+          bump(true, true);
+        else
+          bump(true);
         ready1y = false;
       }else if (v1y > 0){
         bump(false);
@@ -60,7 +81,7 @@ Leap.loop({background: true}, function(frame){
       plotter.plot('x velocity 1', v1x, {
         precision: 4,
         units: 'mm/s'
-      });
+      }); 
 
       plotter.plot('y velocity 1', v1y, {
         precision: 4,
@@ -117,13 +138,18 @@ Leap.loop({background: true}, function(frame){
   });
 
 function swipe(){
-  cymbal.play();
+  left.play();
 }
 
-function bump(hit){
-	if (hit){
+function bump(hit, AMPED){
+  if (AMPED){
+    display.style.backgroundColor = "#220000";
+    down.volume = 1.0;
+    down.play();
+  }else if (hit){
 		display.style.backgroundColor = "#333333";
-		kick.play();
+    down.volume = 0.2;
+		down.play();
 	}else{
 		display.style.backgroundColor = "#ffffff";
 	}
