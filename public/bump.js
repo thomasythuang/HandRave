@@ -73,12 +73,12 @@ Leap.loop({background: true}, function(frame){
       var v2x = hand2.palmVelocity[0];
       var v2y = hand2.palmVelocity[1];
 
-      if (v2y < -700 && ready2){
+      if (v2y < -700 && ready2y){
         bump(true);
-        ready2 = false;
+        ready2y = false;
       }else if (v2y > 0){
         bump(false);
-        ready2 = true;
+        ready2y = true;
       }
 
       if (posX2 == undefined){
