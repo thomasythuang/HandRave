@@ -10,30 +10,13 @@ canvas{
 	height: 100%;
 	pointer-events: none;
 }
-#output{
-  font-size: 66px;
-  color: #660DB5;
-  text-align: left;
-  position: fixed;
-  bottom: 18px;
-  left: 315px;
-}
-
-#progress {
-  background: #660DB5;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 16px;
-  width: 0%;
-}
 img#connect-leap{
   max-width: 100%;
 }
 #plots{
 	position: fixed;
 	left: 0px;
-	bottom: 15px;
+	bottom: 0px;
 	width: 300px;
 	height: 150px;
 }
@@ -51,10 +34,10 @@ img#connect-leap{
 #widget iframe{
   height: 100px;
 }
-#options{
+#options{ /*
   position: fixed;
   top: 0px;
-  left: 0px;
+  left: 0px; */
 }
 .title{
   text-align: center;
@@ -62,4 +45,12 @@ img#connect-leap{
 .title div{
   font-size: 5em;
   font-family: "Syncopate", sans-serif;
+}
+.btn-group{
+  margin-bottom: 10px;
+}
+accordion{
+  position: fixed;
+  top: 0px;
+  left: 0px;
 }

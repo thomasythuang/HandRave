@@ -13,28 +13,41 @@
     <div class="title">
       <div>HANDRAVE</div>
     </div>
-    <div id="options">
-      <div>Downwards Swipe</div>
-      <div class="btn-group">
-        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[0]" uncheckable>{{sounds[0].name}}</label>
-        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[1]" uncheckable>{{sounds[1].name}}</label>
-        <label class="btn btn-primary" ng-model="down" btn-radio="sounds[2]" uncheckable>{{sounds[2].name}}</label>
-      </div>
-      <div>Sideways (left) Swipe</div>
-      <div class="btn-group">
-        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[0]" uncheckable>{{sounds[0].name}}</label>
-        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[1]" uncheckable>{{sounds[1].name}}</label>
-        <label class="btn btn-primary" ng-model="left" btn-radio="sounds[2]" uncheckable>{{sounds[2].name}}</label>
-      </div>
-      <div>
-        <input type="checkbox" ng-model="colorsOn">
-        Flash colors on downwards swipe
-      </div>
-    </div>
+    <accordion>
+      <accordion-group is-open="status.open">
+        <accordion-heading>
+          Options <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+        </accordion-heading>
+        <div id="options">
+          <div>Downwards Swipe</div>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="gesture.down" btn-radio="sounds[0]" uncheckable>{{sounds[0].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.down" btn-radio="sounds[1]" uncheckable>{{sounds[1].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.down" btn-radio="sounds[6]" uncheckable>{{sounds[6].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.down" btn-radio="sounds[7]" uncheckable>{{sounds[7].name}}</label>
+          </div>
+          <div>Sideways (left) Swipe</div>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="gesture.left" btn-radio="sounds[0]" uncheckable>{{sounds[0].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.left" btn-radio="sounds[1]" uncheckable>{{sounds[1].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.left" btn-radio="sounds[6]" uncheckable>{{sounds[6].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.left" btn-radio="sounds[7]" uncheckable>{{sounds[7].name}}</label>
+          </div>
+          <div>Upwards Swipe</div>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="gesture.up" btn-radio="sounds[2]" uncheckable>{{sounds[2].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.up" btn-radio="sounds[3]" uncheckable>{{sounds[3].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.up" btn-radio="sounds[4]" uncheckable>{{sounds[4].name}}</label>
+            <label class="btn btn-primary" ng-model="gesture.up" btn-radio="sounds[5]" uncheckable>{{sounds[5].name}}</label>
+          </div>
+          <div>
+            <input type="checkbox" ng-model="colorsOn">
+            Flash colors on downwards swipe
+          </div>
+        </div>
+      </accordion-group>
+    </accordion>
   </div>
-  <!--
-  <div id="output"></div>
-  <div id="progress"></div> -->
   <canvas id="plots"></canvas>
   <div id="widget"></div>
 
