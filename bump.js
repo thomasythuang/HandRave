@@ -5,7 +5,7 @@ window.plotter = new LeapDataPlotter({
 var output = document.getElementById('output'),
 	progress = document.getElementById('progress'),
 	display = document.getElementById('main');
-var audio = new Audio('sounds/bump2.wav');
+var audio = new Audio('resources/sounds/bump2.wav');
 var hit = false; 
 
 Leap.loop({background: true}, function(frame){
