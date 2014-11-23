@@ -61,6 +61,6 @@ $(document).keypress(function(e){
 
 function playQuiet(sound){
 	track = sound;
-	track.setVolume(20);
+	track.setVolume(15);
 	track.play();
 }

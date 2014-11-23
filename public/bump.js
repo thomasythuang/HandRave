@@ -9,22 +9,34 @@ var down, left;
 var hit1 = false, hit2 = false; 
 var posX1, posX2;
 var ready1x = false, ready1y = false, ready2x = false, ready2y = false;
+var colors = ["FF2E74", "60FF52", "1A1AD9", "ED1127", "24F0E6", "FF7226", "F2E533", ]
+var colorsOn;
 
 var app = angular.module('HandRave', ['ui.bootstrap',]);
 app.controller('mainController', function($scope){
   $scope.sounds = [
-    {name: 'bump1', link: 'resources/sounds/bump1.wav'},
-    {name: 'bump2', link: 'resources/sounds/bump2.wav'},
-    {name: 'cymbal1', link: 'resources/sounds/cymbal1.wav'},
+    {name: 'kick1', link: 'resources/sounds/bump1.wav'},
+    {name: 'kick2', link: 'resources/sounds/bump2.wav'},
+    {name: 'hihat1', link: 'resources/sounds/hihat1.wav'},
   ]
   $scope.down = $scope.sounds[1];
   $scope.left = $scope.sounds[2];
+  $scope.colorsOn = true;
   
   $scope.$watch('down', function(){
-    down = new Audio($scope.down.link);
+    if (!$scope.down) 
+      down = null;
+    else
+      down = new Audio($scope.down.link);
   });
   $scope.$watch('left', function(){
-    left = new Audio($scope.left.link);
+    if (!$scope.left)
+      left = null;
+    else
+      left = new Audio($scope.left.link);
+  })
+  $scope.$watch('colorsOn', function(){
+    colorsOn = $scope.colorsOn;
   })
   
 });
@@ -95,7 +107,10 @@ Leap.loop({background: true}, function(frame){
       var v2y = hand2.palmVelocity[1];
 
       if (v2y < -700 && ready2y){
-        bump(true);
+        if (hand2.grabStrength > 0.9)
+          bump(true, true);
+        else
+          bump(true);
         ready2y = false;
       }else if (v2y > 0){
         bump(false);
@@ -138,21 +153,30 @@ Leap.loop({background: true}, function(frame){
   });
 
 function swipe(){
+  if (!left) return;
+  left.volume = 0.5;
   left.play();
 }
 
 function bump(hit, AMPED){
+  if (!down) return;
   if (AMPED){
-    display.style.backgroundColor = "#220000";
+    if (colorsOn)
+      display.style.backgroundColor = "#bb0000";
     down.volume = 1.0;
     down.play();
   }else if (hit){
-		display.style.backgroundColor = "#333333";
-    down.volume = 0.2;
+    if (colorsOn)
+		  display.style.backgroundColor = randomColor();
+    down.volume = 0.5;
 		down.play();
 	}else{
-		display.style.backgroundColor = "#ffffff";
+		display.style.backgroundColor = "#ededed";
 	}
+}
+
+function randomColor(){
+  return colors[Math.floor(Math.random()*colors.length)];
 }
 
 // Adds the rigged hand plugin to the controller

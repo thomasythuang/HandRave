@@ -1,5 +1,5 @@
 body{
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-family: "Open Sans", sans-serif !important;  
   height: 100%;
   width: 100%;
   margin: 0;
@@ -41,6 +41,7 @@ img#connect-leap{
 	height: 100%;
 	width: 100%;
 	margin: 0;
+  background-color: #ededed;
 }
 #widget{
   position: fixed;
@@ -49,4 +50,16 @@ img#connect-leap{
 }
 #widget iframe{
   height: 100px;
+}
+#options{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+.title{
+  text-align: center;
+}
+.title div{
+  font-size: 5em;
+  font-family: "Syncopate", sans-serif;
 }
