@@ -54,3 +54,12 @@ accordion{
   top: 0px;
   left: 0px;
 }
+.controls{
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  text-align: right;
+}
+#song{
+  font-weight: bold;
+}
